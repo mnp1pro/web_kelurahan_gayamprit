@@ -382,26 +382,6 @@ section:nth-child(5) {
   animation-delay: 0.33s;
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
-@media (max-width: 640px) {
-  header {
-    padding: 60px 16px 40px;
-  }
-
-  section {
-    padding: 32px 24px;
-  }
-
-  .hero {
-    padding: 48px 24px;
-  }
-
-  nav ul li a {
-    padding: 14px 14px;
-    font-size: 0.8rem;
-  }
-}
-
 /* -----   Profil   -----*/
 
 /* ── Breadcrumb ───────────────────────────────────── */
@@ -1530,4 +1510,39 @@ section:nth-child(5) {
     letter-spacing: 0.06em;
     margin-bottom: 6px;
   }
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+/* Tablet */
+@media (max-width: 768px) {
+  .unduhan-grid    { grid-template-columns: repeat(2, 1fr); }
+  .galeri-grid     { grid-template-columns: repeat(2, 1fr); }
+  .potensi-grid    { grid-template-columns: 1fr; }
+  .sejarah-content { grid-template-columns: 1fr; }
+  .batas-grid      { grid-template-columns: 1fr; }
+  .struktur-row    { grid-template-columns: 1fr; }
+  .lb-prev { left: -12px; }
+  .lb-next { right: -12px; }
+}
+
+/* HP Sedang */
+@media (max-width: 640px) {
+  header { padding: 60px 16px 40px; }
+  section { padding: 32px 24px; }
+  .hero, .page-hero { padding: 48px 24px; }
+  nav ul li a { padding: 12px 10px; font-size: 0.8rem; }
+  .sejarah-content { grid-template-columns: 1fr; }
+  .batas-grid { grid-template-columns: 1fr; }
+  .struktur-row, .struktur-row-2 { grid-template-columns: 1fr; }
+}
+
+/* HP Kecil */
+@media (max-width: 480px) {
+  .unduhan-grid { grid-template-columns: 1fr; }
+  .galeri-grid  { grid-template-columns: 1fr; }
+  .stat-info p:first-child { font-size: 1.1rem; }
+  .btn-download { font-size: 0.78rem; padding: 10px 12px; }
+  .card-meta { flex-direction: column; gap: 4px; }
+  nav ul { gap: 0; }
+  nav ul li a { padding: 12px 10px; font-size: 0.75rem; }
 }
