@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri - Kelurahan Gayamprit</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1>Kelurahan Gayamprit</h1>
+      <p>Melayani Masyarakat dengan Cepat dan Ramah</p>
+    </header>
+
+    <!-- Navigasi -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="potensi.html"">Potensi</a></li>
+        <li>
+          <a href="galeri.html" style="color: var(--gold-light)">Galeri</a>
+        </li>
+        <li><a href="unduhan.html">Unduhan</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <h2>Galeri Kelurahan Gayamprit</h2>
+        <p>Dokumentasi Kegiatan &amp; Fasilitas</p>
+      </section>
+
+      <hr class="divider" />
+      <br />
+      <br />
+
+      <!-- Galeri Section -->
+      <section id="galeri">
+        <h2>Foto &amp; Dokumentasi</h2>
+        <p>
+          Klik foto untuk melihat lebih besar.
+        </p>
+
+        <!-- Filter -->
+        <div class="filter-wrapper" style="margin-top: 24px">
+          <button class="filter-btn active" data-filter="semua">Semua</button>
+          <button class="filter-btn" data-filter="kegiatan">Kegiatan</button>
+          <button class="filter-btn" data-filter="fasilitas">Fasilitas</button>
+        </div>
+
+        <!-- Grid -->
+        <div class="galeri-grid" id="galeriGrid">
+          <div
+            class="galeri-item"
+            data-kategori="kegiatan"
+            data-judul="Jalan Sehat Warga"
+            data-desc="Kegiatan rutin jalan sehat bersama warga Kelurahan Gayamprit."
+          >
+            <img src="assets/JalanSehat.jpeg" />
+            <div class="galeri-overlay">
+              <div class="zoom-icon">🔍</div>
+              <span class="galeri-tag tag-kegiatan">Kegiatan</span>
+              <h3>Jalan Sehat Warga</h3>
+              <p>Kegiatan rutin bersama warga</p>
+            </div>
+          </div>
+
+          <div
+            class="galeri-item"
+            data-kategori="fasilitas"
+            data-judul="Kantor Kelurahan"
+            data-desc="Gedung utama Kantor Kelurahan Gayamprit."
+          >
+            <img src="assets/Kantor.png" />
+            <div class="galeri-overlay">
+              <div class="zoom-icon">🔍</div>
+              <span class="galeri-tag tag-fasilitas">Fasilitas</span>
+              <h3>Kantor Kelurahan</h3>
+              <p>Gedung utama kelurahan</p>
+            </div>
+          </div>
+
+          <div
+            class="galeri-item"
+            data-kategori="kegiatan"
+            data-judul="Kerja Bakti Lingkungan"
+            data-desc="Kegiatan kerja bakti membersihkan lingkungan bersama warga."
+          >
+            <img src="assets/KerjaBakti.jpg" />
+            <div class="galeri-overlay">
+              <div class="zoom-icon">🔍</div>
+              <span class="galeri-tag tag-kegiatan">Kegiatan</span>
+              <h3>Kerja Bakti Lingkungan</h3>
+              <p>Gotong royong bersama warga</p>
+            </div>
+          </div>
+
+          <div
+            class="galeri-item"
+            data-kategori="fasilitas"
+            data-judul="Balai Warga"
+            data-desc="Fasilitas balai warga untuk kegiatan rapat dan pertemuan."
+          >
+            <img src="assets/Kantor.png" />
+            <div class="galeri-overlay">
+              <div class="zoom-icon">🔍</div>
+              <span class="galeri-tag tag-fasilitas">Fasilitas</span>
+              <h3>Balai Warga</h3>
+              <p>Tempat pertemuan warga</p>
+            </div>
+          </div>
+
+          <div
+            class="galeri-item"
+            data-kategori="kegiatan"
+            data-judul="Posyandu Balita"
+            data-desc="Kegiatan posyandu rutin untuk balita dan ibu hamil."
+          >
+            <img src="assets/Posyandu.jpg" />
+            <div class="galeri-overlay">
+              <div class="zoom-icon">🔍</div>
+              <span class="galeri-tag tag-kegiatan">Kegiatan</span>
+              <h3>Posyandu Balita</h3>
+              <p>Layanan kesehatan warga</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <div class="lightbox-inner">
+        <button class="lb-close" id="lbClose">✕</button>
+        <button class="lb-btn lb-prev" id="lbPrev">‹</button>
+        <button class="lb-btn lb-next" id="lbNext">›</button>
+        <div class="lightbox-img-wrapper" id="lbImgWrapper"></div>
+        <div class="lightbox-caption">
+          <div>
+            <h3 id="lbJudul"></h3>
+            <p id="lbDesc"></p>
+          </div>
+          <p class="lightbox-counter" id="lbCounter"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p id="clock"></p>
+      <p>&copy; 2026 Kelurahan Gayamprit. All Rights Reserved.</p>
+    </footer>
+
+    <button id="backToTop">↑</button>
+    
+    <script>
+            // Fitur Filter Galeri
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const galeriItems = document.querySelectorAll(".galeri-item");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const filter = btn.dataset.filter;
+          galeriItems.forEach((item) => {
+            if (filter === "semua" || item.dataset.kategori === filter) {
+              item.classList.remove("hidden");
+            } else {
+              item.classList.add("hidden");
+            }
+          });
+
+          // update indeks aktif setelah filter
+          buildActiveList();
+        });
+      });
+
+      // ── Lightbox ───────────────────────────────────────
+      const lightbox = document.getElementById("lightbox");
+      const lbWrapper = document.getElementById("lbImgWrapper");
+      const lbJudul = document.getElementById("lbJudul");
+      const lbDesc = document.getElementById("lbDesc");
+      const lbCounter = document.getElementById("lbCounter");
+
+      let activeList = [];
+      let currentIdx = 0;
+
+      function buildActiveList() {
+        activeList = Array.from(
+          document.querySelectorAll(".galeri-item:not(.hidden)"),
+        );
+      }
+
+      buildActiveList();
+
+      function openLightbox(idx) {
+        currentIdx = idx;
+        const item = activeList[currentIdx];
+        const img = item.querySelector("img");
+
+        lbWrapper.innerHTML = img
+          ? `<img src="${img.src}" alt="${item.dataset.judul}">`
+          : `<div class="lb-placeholder">${item.querySelector(".placeholder").textContent.trim().split("\n")[0]}</div>`;
+
+        lbJudul.textContent = item.dataset.judul || "";
+        lbDesc.textContent = item.dataset.desc || "";
+        lbCounter.textContent = `${currentIdx + 1} / ${activeList.length}`;
+
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function goPrev() {
+        currentIdx = (currentIdx - 1 + activeList.length) % activeList.length;
+        openLightbox(currentIdx);
+      }
+
+      function goNext() {
+        currentIdx = (currentIdx + 1) % activeList.length;
+        openLightbox(currentIdx);
+      }
+
+      // Klik item buka lightbox
+      galeriItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          buildActiveList();
+          const idx = activeList.indexOf(item);
+          if (idx !== -1) openLightbox(idx);
+        });
+      });
+
+      document.getElementById("lbClose").addEventListener("click", closeLightbox);
+      document.getElementById("lbPrev").addEventListener("click", goPrev);
+      document.getElementById("lbNext").addEventListener("click", goNext);
+
+      // Klik di luar foto untuk tutup
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Keyboard: panah kiri/kanan, Escape
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("open")) return;
+        if (e.key === "ArrowLeft") goPrev();
+        if (e.key === "ArrowRight") goNext();
+        if (e.key === "Escape") closeLightbox();
+      });
+    </script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
