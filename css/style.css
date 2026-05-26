@@ -293,6 +293,16 @@ section ul li::before {
   margin-bottom: 20px;
 }
 
+#misi ul li {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+#misi ul li::before {
+  order:2;
+  margin-top: 7px;
+}
+
 #visi p,
 #misi p {
   background: var(--cream);
