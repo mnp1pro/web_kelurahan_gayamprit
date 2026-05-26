@@ -286,6 +286,10 @@ section ul li::before {
 }
 
 /* ── Visi-Misi special styling ────────────────────────────── */
+#misi h2 {
+   text-align: right;
+}
+
 #visi h2:first-of-type,
 #misi h2:first-of-type {
   padding-bottom: 12px;
